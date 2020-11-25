@@ -15,11 +15,11 @@
             <el-tabs type="card" v-if="headerArray.length>1">
                 <el-tab-pane :label="body.tabname" v-for="(body,bindexs) in headerArray" :key="bindexs">
                     <el-form :inline="true" :disabled="true" class="demo-form-inline form-dl" label-width="130px">
-                        <div class="el-form-item" v-for="(item,index) in body.cols" v-bind:key="index">
+                        <div class="el-form-item" v-for="(item,index) in body.cols" v-bind:key="index" v-bind:class="{'el-form-item-row': item.newline_flag=='Y'}">
                             <div class="el-form-item__label" :title="item.name">{{item.name}}</div>
                             <div class="el-form-item__content">
                                 <div class="el-input is-disabled">
-                                    <div class="el-input__inner" @click="openMessageInput(item.name,item.value)">
+                                    <div  v-bind:class="{'el-one-row-div':item.newline_flag=='Y'  }" class="el-input__inner" @click="openMessageInput(item.name,item.value)">
                                         {{item.value}}</div>
                                 </div>
                             </div>
@@ -695,6 +695,9 @@
     .box>>>.el-form--inline .el-form-item:hover .label-tips {
         display: inline-block;
     }
+    .box >>>.el-form-item-row{
+        display: block;
+    }
 
     .label-tips {
         display: none;
@@ -723,5 +726,12 @@
 
     .el-form-item__content {
         width: 206px;
+    }
+    .el-one-row-div{
+        height: 131px;
+        white-space: normal!important;
+        word-wrap: break-word!important;
+        word-break: break-all!important;
+        width: 1300px;
     }
 </style>

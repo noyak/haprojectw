@@ -15,7 +15,7 @@ Vue.prototype.get = get;
 Vue.prototype.post = post;
 Vue.prototype.$qs = qs
 Vue.prototype.userApiUrl = 'https://mobile.haxm.com/kos'
-
+// Vue.prototype.userApiUrl = 'http://10.54.6.208:2019/kos'
 
 Vue.prototype.pdfurl = 'https://mobile.haxm.com/kos/pdf/web/viewer.html?file=https://hrpservice.cndcare.com/hrpservice/attachment/getPDF/'
 
