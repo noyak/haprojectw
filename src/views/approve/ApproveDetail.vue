@@ -29,11 +29,11 @@
             </el-tabs>
             <el-form :inline="true" :disabled="true" class="demo-form-inline form-dl" label-width="130px"
                 v-if="headerArray.length==1">
-                <div class="el-form-item" v-for="(item,index) in headerArray[0].cols" v-bind:key="index">
+                <div class="el-form-item" v-for="(item,index) in headerArray[0].cols" v-bind:key="index" v-bind:class="{'el-form-item-row': item.newline_flag=='Y'}" >
                     <div class="el-form-item__label" :title="item.name">{{item.name}}</div>
                     <div class="el-form-item__content">
                         <div class="el-input is-disabled">
-                            <div class="el-input__inner" @click="openMessageInput(item.name,item.value)">
+                            <div class="el-input__inner" v-bind:class="{'el-one-row-div':item.newline_flag=='Y'  }"  @click="openMessageInput(item.name,item.value)">
                                 {{item.value}}</div>
                         </div>
                     </div>
@@ -133,7 +133,7 @@
             <reject-approve :msgId="msgid" :userId="userId" @close="closeDialog" @submitForm="rejectSubmit">
             </reject-approve>
         </el-dialog>
-        <el-dialog :title="isShowTitle" :visible.sync="isShowMoreTips" width="70%" :before-close="handleClose">
+        <el-dialog :title="isShowTitle" :visible.sync="isShowMoreTips" width="70%" >
             <span>{{isShowContent}}</span>
             <span slot="footer" class="dialog-footer">
                 <el-button type="primary" @click="isShowMoreTips = false">确 定</el-button>
